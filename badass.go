@@ -11,26 +11,26 @@ import (
 )
 
 const (
-	SEED        = 72
+	SATURATION  = 72
 	WEEK        = 7
-	ROWS        = 81
-	MAX_COMMITS = 74 // TODO: Should be equal to ~74
+	COLS        = 81
+	MAX_COMMITS = 74
 	START_DATE  = ""
 )
 
 var (
-	flSeed       int
-	flMaxRows    int
+	flSaturation int
+	flColumns    int
 	flMaxCommits int
 	flStartDate  string
 	totalCommits int
 )
 
 const (
-	UsgSeed            = "sets a seed value for commits pattern range 1-100"
-	UsgSeedShort       = "short hand version of --seed"
-	UsgMaxRows         = "sets the value of maximum rows for contribution graph"
-	UsgMaxRowsShort    = "short hand version of --max-rows"
+	UsgSaturation      = "sets saturation of working days range 1-100"
+	UsgSaturationShort = "short hand version of --saturation"
+	UsgColumns         = "sets the value of maximum rows for contribution graph"
+	UsgColumnsShort    = "short hand version of --columns"
 	UsgStartDate       = "sets the starting date of contribution graph. Must be in MM/DD/YYYY format"
 	UsgStartDateShort  = "short hand version of --date"
 	UsgMaxCommits      = "sets the value of maximum commits for a date"
@@ -38,28 +38,28 @@ const (
 )
 
 func init() {
-	flag.IntVar(&flSeed, "seed", SEED, UsgSeed)
-	flag.IntVar(&flSeed, "s", SEED, UsgSeedShort)
+	flag.IntVar(&flSaturation, "saturation", SATURATION, UsgSaturation)
+	flag.IntVar(&flSaturation, "s", SATURATION, UsgSaturationShort)
 
-	flag.IntVar(&flMaxRows, "max-rows", ROWS, UsgMaxRows)
-	flag.IntVar(&flMaxRows, "mr", ROWS, UsgMaxRowsShort)
+	flag.IntVar(&flColumns, "columns", COLS, UsgColumns)
+	flag.IntVar(&flColumns, "c", COLS, UsgColumnsShort)
 
 	flag.StringVar(&flStartDate, "date", START_DATE, UsgStartDate)
 	flag.StringVar(&flStartDate, "d", START_DATE, UsgStartDateShort)
 
-	flag.IntVar(&flMaxCommits, "commits", MAX_COMMITS, UsgMaxCommits)
-	flag.IntVar(&flMaxCommits, "c", MAX_COMMITS, UsgMaxCommitsShort)
+	flag.IntVar(&flMaxCommits, "max-commits", MAX_COMMITS, UsgMaxCommits)
+	flag.IntVar(&flMaxCommits, "m", MAX_COMMITS, UsgMaxCommitsShort)
 
 	flag.Parse()
 
-	if flSeed < 1 || flSeed > 100 {
-		flSeed = SEED
+	if flSaturation < 1 || flSaturation > 100 {
+		flSaturation = SATURATION
 	}
 	_, err := time.Parse("01/02/2006", flStartDate)
 
 	if flStartDate == "" {
 		t := time.Now()
-		flStartDate = fmt.Sprintf("%02d/%02d/%04d", t.Month(), t.Day(), t.Year())
+		flStartDate = fmt.Sprintf("%02d/%02d/%04d", t.Month(), t.Day(), t.Year()-1)
 	} else if err != nil {
 		fmt.Println("please provide a valid date in MM/DD/YYYY format.")
 		os.Exit(2)
@@ -75,9 +75,9 @@ func main() {
 
 	var pattern string
 
-	for i := 0; i < flMaxRows; i++ {
+	for i := 0; i < flColumns; i++ {
 		for j := 0; j < WEEK; j++ {
-			if rand.Intn(100) > flSeed {
+			if rand.Intn(100) > flSaturation {
 				pattern += "."
 			} else {
 				pattern += "0"
