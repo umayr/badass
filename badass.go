@@ -13,7 +13,7 @@ import (
 const (
 	SATURATION  = 72
 	WEEK        = 7
-	COLS        = 81
+	COLS        = 75
 	MAX_COMMITS = 74
 	START_DATE  = ""
 )
