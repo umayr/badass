@@ -16,7 +16,7 @@ $ cd path/to/repo
 $ go get github.com/umayr/badass
 $ go build github.com/umayr/badass
 $ chmod +x badass.exe
-$ badass --date 02/21/2013 --seed 50
+$ badass --date 02/21/2013 --saturation 50 --max-commits 60
 ...
 $ git push origin master
 
