@@ -6,6 +6,9 @@ A tiny script that can make you look *badass* on github.
 
 It generates false commits having older dates, so when you push your commits to github; your [contribution graph](https://help.github.com/articles/viewing-contributions-on-your-profile-page#contributions-calendar) gets smth similar to other badass devs. If your graph doesn't get affected after execution, then you should read this [article](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile). Cheers ^^
 
+Screenshot
+----
+![Screenshot](http://i.imgur.com/6evEG7N.png)
 
 Instructions
 ----
