@@ -4,38 +4,30 @@ Badass
 
 A tiny script that can make you look *badass* on github. 
 
-It generates false commits having older dates, so when you push your commits to github; your [contribution graph](https://help.github.com/articles/viewing-contributions-on-your-profile-page#contributions-calendar) gets smth similar to other badass devs. If your graph doesn't get affected after execution, then you should read this [article](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile). Cheers ^^
+It generates false commits having older dates, so when you push your commits to github; your [contribution graph](https://help.github.com/articles/viewing-contributions-on-your-profile-page#contributions-calendar) gets something similar to other badass developers. If your graph doesn't get affected after execution, then you should read this [article](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile). Cheers.
 
 Screenshot
 ----
 ![Screenshot](http://i.imgur.com/6evEG7N.png)
 
-Instructions
+Install
 ----
 
-```sh
-# Move to any repo you want to generate commits for
-$ cd path/to/repo
-$ go get github.com/umayr/badass
-$ go build github.com/umayr/badass
-$ chmod +x badass.exe
-$ badass --date 02/21/2013 --saturation 50 --max-commits 60
-...
-$ git push origin master
+If you have `go` installed and set up [`GOPATH`](https://code.google.com/p/go-wiki/wiki/GOPATH) then install it by:
 
 ```
+ $ go get github.com/umayr/badass
+```
 
-Make sure you have set [GOPATH](https://code.google.com/p/go-wiki/wiki/GOPATH). Later you can remove the bins or whatever.
-
-
-Version
+Usage
 ----
 
-0.2
-
-Flags
------
-
+If you have `$GOPATH/bin` in your `$PATH`, you can use it as:
+```bash
+ $ badass --date 02/21/2013 --saturation 50 --max-commits 60
+ # let it do its magic
+ $ git push origin master
+```
 Badass takes various flags as input
 
 * **--saturation, -s** : Higher the value of seeds, higher the saturations of commits. *Default: 72*
@@ -47,6 +39,7 @@ Badass takes various flags as input
 License
 ----
 
+```
 The MIT License (MIT)
 
 Copyright (c) 2014 Umayr Shahid ([umayrr@hotmail.co.uk](mailto:umayrr@hotmail.co.uk))
@@ -68,6 +61,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
 
 Contact
 -----
